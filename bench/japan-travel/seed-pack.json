@@ -1,0 +1,124 @@
+{
+  "domain": "japan-travel",
+  "entities": [
+    {
+      "category": "transport",
+      "slug": "jr-pass",
+      "name": "JR Pass",
+      "initial_knowledge": [
+        {
+          "field": "price",
+          "value": {"7day_ordinary_jpy": 50000, "14day_ordinary_jpy": 80000, "21day_ordinary_jpy": 100000},
+          "source_url": "https://www.japanrailpass.net/en/",
+          "source_title": "Japan Rail Pass Official",
+          "snippet": "The 7-day Ordinary Pass costs 50,000 yen, 14-day 80,000 yen, and 21-day 100,000 yen for adults."
+        }
+      ]
+    },
+    {
+      "category": "accommodation",
+      "slug": "capsule-hotel",
+      "name": "캡슐 호텔",
+      "initial_knowledge": [
+        {
+          "field": "price",
+          "value": {"per_night_jpy_range": "2000-5000"},
+          "source_url": "manual-curation",
+          "source_title": "일반 여행 정보",
+          "snippet": "캡슐 호텔 1박 요금은 2,000~5,000엔 수준으로 도심 저가 숙박 옵션이다."
+        }
+      ]
+    },
+    {
+      "category": "attraction",
+      "slug": "sensoji",
+      "name": "센소지",
+      "initial_knowledge": [
+        {
+          "field": "location",
+          "value": {"address": "2-3-1 Asakusa, Taito City, Tokyo", "area": "Asakusa"},
+          "source_url": "https://www.senso-ji.jp/",
+          "source_title": "浅草寺 공식 사이트",
+          "snippet": "Senso-ji is located in Asakusa, Taito City, Tokyo."
+        },
+        {
+          "field": "hours",
+          "value": "경내 24시간 개방 / 본당 06:00-17:00 (10월~3월 06:30~)",
+          "source_url": "https://www.senso-ji.jp/",
+          "source_title": "浅草寺 공식 사이트",
+          "snippet": "The temple grounds are open 24 hours. The main hall opens at 6:00 AM (6:30 AM October to March)."
+        }
+      ]
+    },
+    {
+      "category": "dining",
+      "slug": "ramen",
+      "name": "라멘",
+      "initial_knowledge": [
+        {
+          "field": "price",
+          "value": {"average_bowl_jpy_range": "800-1500"},
+          "source_url": "manual-curation",
+          "source_title": "일반 여행 정보",
+          "snippet": "일본 라멘 한 그릇 평균 가격은 800~1,500엔 수준이다."
+        }
+      ]
+    },
+    {
+      "category": "regulation",
+      "slug": "visa-waiver",
+      "name": "무비자 입국",
+      "initial_knowledge": [
+        {
+          "field": "policy",
+          "value": "한국·미국·EU 등 68개국 여권 소지자는 최대 90일 무비자 관광 가능",
+          "source_url": "https://www.mofa.go.jp/j_info/visit/visa/",
+          "source_title": "일본 외무성 비자 안내",
+          "snippet": "Citizens of 68 countries including South Korea, the US, and EU nations may enter Japan without a visa for up to 90 days."
+        }
+      ]
+    },
+    {
+      "category": "pass-ticket",
+      "slug": "ic-card",
+      "name": "IC 카드 (Suica/Pasmo)",
+      "initial_knowledge": [
+        {
+          "field": "price",
+          "value": {"deposit_jpy": 500, "minimum_charge_jpy": 1000},
+          "source_url": "https://www.jreast.co.jp/e/pass/suica.html",
+          "source_title": "JR East Suica 안내",
+          "snippet": "Suica requires a 500 yen deposit. Minimum initial charge is 1,000 yen."
+        }
+      ]
+    },
+    {
+      "category": "connectivity",
+      "slug": "pocket-wifi",
+      "name": "포켓 WiFi 렌탈",
+      "initial_knowledge": [
+        {
+          "field": "price",
+          "value": {"rental_per_day_jpy_range": "300-700"},
+          "source_url": "manual-curation",
+          "source_title": "일반 여행 정보",
+          "snippet": "일본 포켓 WiFi 렌탈 요금은 하루 300~700엔 수준으로 공항 카운터 또는 온라인 사전 예약이 가능하다."
+        }
+      ]
+    },
+    {
+      "category": "payment",
+      "slug": "cash",
+      "name": "현금 결제",
+      "initial_knowledge": [
+        {
+          "field": "acceptance",
+          "value": "일본 전국 대부분 상점·음식점에서 현금 사용 가능. 소규모 상점은 현금 전용인 경우 많음.",
+          "source_url": "manual-curation",
+          "source_title": "일반 여행 정보",
+          "snippet": "Cash is widely accepted throughout Japan. Many small restaurants and shops are cash-only."
+        }
+      ]
+    }
+  ]
+}
