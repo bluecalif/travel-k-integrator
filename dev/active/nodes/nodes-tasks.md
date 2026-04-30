@@ -45,7 +45,7 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.3 | `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` (L1) | S | ✅ | — |
+| 3.3 | `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` (L1) | S | ✅ | af6ed9b |
 
 **완료 조건**:
 - [x] open GU 최다 entity → target_entities[cat] 선정 (카테고리별)
