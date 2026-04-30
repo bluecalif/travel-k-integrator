@@ -40,7 +40,7 @@ def save_state(state: BronzeState, trial_dir: str | Path) -> None:
         k: dataclasses.asdict(v) for k, v in state.category_saturation.items()
     })
     _write_json(state_dir / "run-meta.json", {
-        "target_entity": state.target_entity,
+        "target_entities": state.target_entities,
         "current_cycle": state.current_cycle,
         "plan_queue": state.plan_queue,
         "pending_claims": state.pending_claims,
@@ -80,7 +80,7 @@ def load_state(trial_dir: str | Path) -> BronzeState:
         gap_map=gap_map,
         metrics=metrics,
         category_saturation=category_saturation,
-        target_entity=meta.get("target_entity"),
+        target_entities=meta.get("target_entities", {}),
         current_cycle=meta.get("current_cycle", 0),
         plan_queue=meta.get("plan_queue", []),
         pending_claims=meta.get("pending_claims", []),

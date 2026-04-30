@@ -59,7 +59,7 @@ class BronzeState:
     evidence_units: list[EU]                           = field(default_factory=list)
     gap_map: list[GU]                                  = field(default_factory=list)
     category_saturation: dict[str, CategorySaturation] = field(default_factory=dict)
-    target_entity: str | None                          = None
+    target_entities: dict[str, str]                     = field(default_factory=dict)
     current_cycle: int                                 = 0
     plan_queue: list[str]                              = field(default_factory=list)
     pending_claims: list[dict]                         = field(default_factory=list)

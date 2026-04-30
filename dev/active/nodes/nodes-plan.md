@@ -1,7 +1,7 @@
 # nodes Phase Plan
 > Gen: bronze
-> Last Updated: 2026-04-30
-> Status: In Progress (2/6 — Step 7 진행 예정)
+> Last Updated: 2026-05-01
+> Status: In Progress (3/6 — Step 8 collect.py 진행 예정)
 
 ## Summary
 
@@ -23,6 +23,10 @@ nodes Phase 진행:
 - **Step 5 ✅** `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` — 15/15 pass (`2d8249e`)
 - **Step 6 ✅** `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` — 11/11 pass
   - 카테고리 내 + 전역 de-dup, API 예외 propagate, 프롬프트 품질 개선
+- **Step 7 ✅** `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` — 8/8 pass
+  - `BronzeState.target_entity` → `target_entities: dict[str, str]` (카테고리별 entity 선정)
+  - gap_gen: applicable field 중 GU 전혀 없는 field에 open GU 신규 생성
+  - plan_queue: 전 카테고리 target entity open GU 합산 후 max_gus_per_cycle cap
 
 ---
 

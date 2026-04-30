@@ -1,12 +1,12 @@
 # nodes Phase Tasks
 > Gen: bronze
 > Last Updated: 2026-04-30
-> Status: In Progress (2/6, 33%)
+> Status: In Progress (3/6, 50%)
 
 ## Summary
 
 - **총 Tasks**: 6 (M: 3, S: 2, L: 1)
-- **완료**: 2/6 (33%)
+- **완료**: 3/6 (50%)
 - **Steps**: 5–10
 - **합격 기준**: `python -m pytest tests/test_nodes/` 전체 pass
 
@@ -45,13 +45,13 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.3 | `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` (L1) | S | ⬜ | — |
+| 3.3 | `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` (L1) | S | ✅ | — |
 
 **완료 조건**:
-- [ ] vacant 최다 entity → target_entity 선정
-- [ ] plan_queue 길이 ≤ max_gus_per_cycle (25)
-- [ ] open GU 없는 entity 제외 확인
-- [ ] L1 pytest pass
+- [x] open GU 최다 entity → target_entities[cat] 선정 (카테고리별)
+- [x] plan_queue 길이 ≤ max_gus_per_cycle (25)
+- [x] open GU 없는 entity 제외 확인
+- [x] L1 pytest pass (8/8)
 
 ---
 
@@ -102,6 +102,6 @@
 
 ## 전체 완료 체크
 
-- [ ] 6/6 Tasks ✅ (현재 2/6)
+- [ ] 6/6 Tasks ✅ (현재 3/6)
 - [ ] `python -m pytest tests/test_nodes/` 전체 pass
-- [ ] 각 Step별 커밋 완료 (Step 5 ✅ / 6 ✅ / 7~10 ⬜)
+- [ ] 각 Step별 커밋 완료 (Step 5 ✅ / 6 ✅ / 7 ✅ / 8~10 ⬜)

@@ -1,115 +1,115 @@
 # Session Compact
 
-> Generated: 2026-04-30
-> Source: /close-day
+> Generated: 2026-05-01
+> Source: Conversation compaction via /compact-and-go
 
 ## Goal
 
-travel-k-integrator Bronze Gen 구현. nodes Phase 6개 노드 + L1 테스트 구현 진행 중.
+travel-k-integrator Bronze Gen 구현. nodes Phase Step 7 (plan.py) 구현 착수 — 설계 결정 확정 후 구현 직전 컴팩트.
 
 ## Completed
 
-- [x] **Step 5**: `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` (`2d8249e`) — 15/15 pass
-- [x] **Step 6**: `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` (`c6ef50e`) — 11/11 pass
-  - 카테고리 내 de-dup + 전역 de-dup (크로스-카테고리 중복 방지)
-  - 프롬프트 개선: 전체 레지스트리 노출 + 추상 개념 금지 조건
-  - API 예외 propagate (ValueError만 catch)
-  - 실제 LLM 출력 품질 검토 후 2건 이슈 수정
-- [x] `/step-update --sync-overall`: nodes tasks/context/plan/debug + project-overall 동기화 (`00666e2`)
-- [x] `/bird-view update`: PRELIMINARY → 실제 코드 기반으로 갱신
+- [x] `/resume-day` 실행: 오늘 작업 목록 + 조감도 확인
+- [x] **설계 결정 확정**: `target_entity: str | None` → `target_entities: dict[str, str]` (카테고리당 1개 entity 선정)
+- [x] 구현 전 필요 파일 전부 읽기 완료:
+  - `docs/masterplan_v0-reference.md §C.2` — plan 노드 의사코드
+  - `dev/active/nodes/nodes-context.md` — 노드 결정사항
+  - `src/nodes/seed.py` — `_resolve_applicable_fields` 구현 패턴
+  - `src/state.py` — BronzeState 현재 정의
+  - `src/utils/state_io.py` — 직렬화/역직렬화 현재 구현
+  - `src/config.py` — BronzeConfig 구조
+  - `tests/test_nodes/test_entity_gen.py` — L1 테스트 패턴 참조
 
 ## Current State
 
 ```
 travel-k-integrator/
-├── bench/japan-travel/
-│   ├── domain-skeleton.json  ✅
-│   └── seed-pack.json        ✅
 ├── src/nodes/
-│   ├── seed.py               ✅ (Step 5, 2d8249e)
-│   ├── entity_gen.py         ✅ (Step 6, c6ef50e)
-│   ├── plan.py               ← 다음 (Step 7)
+│   ├── seed.py               ✅ (Step 5)
+│   ├── entity_gen.py         ✅ (Step 6)
+│   ├── plan.py               ✅ (Step 7)
 │   ├── collect.py            ← Step 8
 │   ├── integrate.py          ← Step 9
 │   └── critique.py           ← Step 10
 ├── tests/test_nodes/
 │   ├── test_seed.py          ✅ (15 passed)
 │   ├── test_entity_gen.py    ✅ (11 passed)
-│   └── (나머지 4개 미구현)
-└── dev/active/
-    ├── project-overall/      ✅ (2/6 동기화)
-    ├── data/                 ✅ (Complete)
-    └── nodes/                🔵 In Progress (2/6)
+│   ├── test_plan.py          ✅ (8/8 pass)
+└── src/state.py              ✅ target_entities: dict[str, str] 변경 완료
 ```
 
-**현재 브랜치**: main
-**최신 커밋**: `00666e2 Step Update: Step 6 커밋 해시 반영`
-
-### Changed Files (이번 세션)
-
-- `src/nodes/entity_gen.py` — 신규 (85줄)
-- `tests/test_nodes/test_entity_gen.py` — 신규 (130줄, 11 tests)
-- `dev/active/nodes/nodes-tasks.md` — 2/6 완료 체크
-- `dev/active/nodes/nodes-context.md` — nodes-7/8/9 결정사항 추가
-- `dev/active/nodes/nodes-plan.md` — 상태 갱신
-- `dev/active/nodes/debug-history.md` — 버그 2건 추가
-- `dev/active/project-overall/project-overall-tasks.md` — 3.1/3.2 완료
-- `docs/bird-view.md` — PRELIMINARY → 실제 코드 기반 갱신
+**현재 브랜치**: main  
+**최신 커밋**: `00666e2 Step Update: Step 6 커밋 해시 반영`  
+**이번 세션 변경 파일 없음** (구현 착수 전 컴팩트)
 
 ## Remaining / TODO
 
-nodes Phase (Steps 5–10):
+### Step 7 구현 항목 (이번 세션에서 해야 할 것)
 
-- [x] **Step 5**: seed.py + test_seed.py → `2d8249e`
-- [x] **Step 6**: entity_gen.py + test_entity_gen.py → `c6ef50e`
-- [ ] **Step 7**: plan.py + test_plan.py
-- [ ] **Step 8**: collect.py + test_collect.py
-- [ ] **Step 9**: integrate.py + test_integrate.py
-- [ ] **Step 10**: critique.py + test_critique.py
-- [ ] **Step 11**: graph.py + scripts/run_bronze.py (runner Phase — `/dev-docs` 먼저)
-- [ ] **Steps 12–14**: dev-smoke → dev-baseline → bronze-v1 (validation Phase)
+- [x] `src/state.py` — `target_entities: dict[str, str]` 변경 완료
+- [x] `src/utils/state_io.py` — 직렬화 2곳 변경 완료
+- [x] `src/nodes/plan.py` — 신규 구현 완료
+- [x] `tests/test_nodes/test_plan.py` — L1 8/8 pass
+- [x] `dev/active/nodes/nodes-context.md` — nodes-10 결정사항 추가, interface table 업데이트
+- [x] `/step-update` 실행
+
+### 이후 단계
+
+- [ ] Step 8: collect.py + test_collect.py
+- [ ] Step 9: integrate.py + test_integrate.py
+- [ ] Step 10: critique.py + test_critique.py
+- [ ] Step 11: graph.py + run_bronze.py (`/dev-docs` 먼저)
+- [ ] Steps 12–14: dev-smoke → dev-baseline → bronze-v1
 
 ## Key Decisions
 
-- **워크플로우**: 각 Phase 착수 전 `/dev-docs` 먼저 실행 (memory 저장됨)
-- **LangGraph 노드 시그니처**: `(BronzeState) -> dict`. seed만 예외 — `config["configurable"]["bench_root"]` 추가
-- **LLM 호출 패턴**: `create_llm(config).invoke(prompt)` → `response.content` (llm_adapter.py)
-- **mock 패턴**: `patch("src.nodes.<node>.create_llm", return_value=MockLLM([...]))`
-- **entity_gen 전역 de-dup**: 카테고리 내 + 전체 레지스트리 slug 비교, sim≥0.85 거부
-- **entity_gen 예외 처리**: `except ValueError`만 catch. API 오류는 propagate (saturation 오염 방지)
-- **entity_gen 프롬프트**: 전체 레지스트리 entity 목록 + 추상 개념 금지 명시
+- **nodes-10**: `plan.py`의 `target_entity`는 카테고리당 1개 entity 선정 (기존 §C.2의 전역 1개에서 변경)
+  - `BronzeState.target_entity: str | None` → `target_entities: dict[str, str]`
+  - plan 노드 반환: `{"target_entities": {cat: entity_key, ...}, "plan_queue": [...]}`
+  - downstream (collect, integrate)은 `plan_queue` GU ID 목록만 사용 — target_entities 직접 참조 없음
+  - `plan_queue` 는 모든 카테고리 target entity의 open GU를 합쳐 `max_gus_per_cycle=25` cap 적용
 
 ## Context
 
 다음 세션에서는 답변에 한국어를 사용하세요.
 
-- **참조 프로젝트**: `C:\Users\User\Learning\KBs-2026\domain-k-evolver`
-  - `src/nodes/plan.py` — Step 7 참조 포인트
-  - `src/nodes/collect.py`, `src/nodes/integrate.py`, `src/nodes/critique.py` — Step 8~10
-- **nodes-context.md** 필수 참조: `dev/active/nodes/nodes-context.md`
-- **masterplan_v0-reference.md §C.2**: plan 노드 의사코드 + entity_select 로직
-- **entity_resolver**: `max_similarity(slug, slugs)`, `extract_slug(entity_key)` — `src/utils/entity_resolver.py`
-- **API 키**: `C:\Users\User\Learning\KBs-2026\domain-k-evolver\.env` 참조
+- **`_resolve_applicable_fields` 중복 구현 필요**: `seed.py`에 private으로 정의되어 있음. `plan.py`에도 동일 로직 복붙 (추상화 금지 원칙). 로직: `"*" in cats or category in cats`
+- **LangGraph 시그니처**: `plan(state: BronzeState) -> dict` (config 파라미터 없음 — seed와 달리 bench_root 불필요)
+- **BronzeConfig mock 패턴**: `patch("src.nodes.plan.BronzeConfig.from_env", return_value=BronzeConfig(max_gus_per_cycle=25))`
+- **gap_gen 재확인**: plan 노드 실행 시 target entity의 applicable fields 중 GU가 없는 field에 GU 신규 생성 (any status — open/resolved/failed 모두 포함)
+- **conftest.py 없음**: test_entity_gen.py처럼 각 테스트 파일에 `_make_state()` 헬퍼 함수 패턴 사용
+- **참조 프로젝트**: `C:\Users\User\Learning\KBs-2026\domain-k-evolver\src\nodes\plan.py`
+- **nodes-context.md**: `dev/active/nodes/nodes-context.md` — 결정사항 nodes-10 추가 필요
 
 ## Next Action
 
-### 단기 (내일/다음 세션)
-
-**Step 7: plan.py + test_plan.py 구현** — 예상 소요: S
+### 즉시 실행 (Step 7 구현)
 
 ```
 /node-impl plan
 ```
 
-plan 노드 핵심 (masterplan_v0-reference.md §C.2):
-- `entity_select`: open GU 보유 entity 중 vacant_field_count 최다 → `target_entity`
-- `gap_gen`: target_entity의 applicable_fields 재확인 → 누락 GU 생성
-- `slicing`: open GU 중 target_entity 것만 → `plan_queue[:max_gus_per_cycle=25]`
+또는 수동 구현 순서:
 
-### 중기 (이번 주)
-
-- Step 8: collect.py (Tavily + LLM Claim 추출)
-- Step 9: integrate.py (Case A/B/C, 불변원칙 집중 테스트)
-- Step 10: critique.py (수렴/강제종료 판정)
-- Step 11: graph.py + run_bronze.py (`/dev-docs` 먼저 실행)
-- Steps 12–14: dev-smoke → dev-baseline → bronze-v1
+1. **`src/state.py`** — `target_entity` → `target_entities` 변경
+2. **`src/utils/state_io.py`** — 직렬화/역직렬화 2곳 변경
+3. **`src/nodes/plan.py`** — 신규 작성:
+   ```
+   for cat in categories:
+       gap_gen: ensure_all_applicable_gus(cat_entities, skeleton)
+       entity_select: max(cat_candidates, key=open_gu_count)
+       target_entities[cat] = selected_entity
+       plan_gus += open_gus_for_target
+   plan_queue = [gu.gu_id for gu in plan_gus[:max_gus_per_cycle]]
+   return {"target_entities": target_entities, "plan_queue": plan_queue, ...}
+   ```
+4. **`tests/test_nodes/test_plan.py`** — L1 테스트 (7개 이상):
+   - 카테고리별 1개 entity 선정
+   - open GU 최다 entity 선정
+   - plan_queue GU ID 포함 확인
+   - plan_queue 25 cap
+   - entity 없는 카테고리 skip
+   - open GU 없는 카테고리 skip
+   - gap_gen: 누락 GU 신규 생성
+5. **`dev/active/nodes/nodes-context.md`** — nodes-10 추가, interface table `target_entity` → `target_entities`
+6. 테스트 통과 확인 후 `/step-update` 실행
