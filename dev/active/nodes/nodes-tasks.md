@@ -1,12 +1,12 @@
 # nodes Phase Tasks
 > Gen: bronze
 > Last Updated: 2026-04-30
-> Status: In Progress (0/6, 0%)
+> Status: In Progress (2/6, 33%)
 
 ## Summary
 
 - **총 Tasks**: 6 (M: 3, S: 2, L: 1)
-- **완료**: 0/6 (0%)
+- **완료**: 2/6 (33%)
 - **Steps**: 5–10
 - **합격 기준**: `python -m pytest tests/test_nodes/` 전체 pass
 
@@ -16,14 +16,14 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.1 | `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` (L1) | M | ⬜ | — |
+| 3.1 | `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` (L1) | M | ✅ | 2d8249e |
 
 **완료 조건**:
-- [ ] entity_registry 등록 수 == seed entities 수
-- [ ] active KU 수 == initial_knowledge 총 항목 수
-- [ ] EU 수 == active KU 수 (불변원칙 3)
-- [ ] GU open 수 == applicable_fields 합계 − initial_knowledge 수
-- [ ] L1 pytest pass
+- [x] entity_registry 등록 수 == seed entities 수
+- [x] active KU 수 == initial_knowledge 총 항목 수
+- [x] EU 수 == active KU 수 (불변원칙 3)
+- [x] GU open 수 == applicable_fields 합계 − initial_knowledge 수
+- [x] L1 pytest pass (15/15)
 
 ---
 
@@ -31,13 +31,13 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.2 | `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` (L1) | M | ⬜ | — |
+| 3.2 | `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` (L1) | M | ✅ | — |
 
 **완료 조건**:
-- [ ] 신규 후보 → entity_registry 등록 + mandatory GU 생성
-- [ ] sim≥0.85 중복 → 등록 안 됨 + consecutive_failures +1
-- [ ] consecutive_failures≥2 → is_saturated=True
-- [ ] L1 pytest pass
+- [x] 신규 후보 → entity_registry 등록 + mandatory GU 생성
+- [x] sim≥0.85 중복 → 등록 안 됨 + consecutive_failures +1 (카테고리 내 + 전역)
+- [x] consecutive_failures≥2 → is_saturated=True
+- [x] L1 pytest pass (11/11)
 
 ---
 
@@ -102,6 +102,6 @@
 
 ## 전체 완료 체크
 
-- [ ] 6/6 Tasks ✅
+- [ ] 6/6 Tasks ✅ (현재 2/6)
 - [ ] `python -m pytest tests/test_nodes/` 전체 pass
-- [ ] 각 Step별 커밋 완료 (Step 5/6/7/8/9/10)
+- [ ] 각 Step별 커밋 완료 (Step 5 ✅ / 6 ✅ / 7~10 ⬜)

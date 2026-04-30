@@ -1,135 +1,102 @@
 # Session Compact
 
-> Generated: 2026-04-30 21:30
-> Source: Conversation compaction via /compact-and-go
+> Generated: 2026-04-30
+> Source: Step 6 완료 후 갱신
 
 ## Goal
 
-travel-k-integrator Bronze Gen 구현 시작 전 개발 문서(dev-docs) 체계 수립.
-project-overall + scaffold Phase docs 생성 + 프로젝트 전용 스킬 제작.
+travel-k-integrator Bronze Gen 구현. nodes Phase 6개 노드 + L1 테스트 구현 진행 중.
 
 ## Completed
 
-- [x] `/resume-session` — session-compact.md 확인, Step 1 대기 상태 파악
-- [x] `/bird-view just preliminary version` — `docs/bird-view.md` 생성
-  - 6개 노드(seed/entity_gen/plan/collect/integrate/critique) 의사코드 + State 변경 명시
-  - PRELIMINARY 마킹 (코드 미착수 설계 기반)
-- [x] `/dev-docs create project-overall first` — `dev/active/project-overall/` 3개 파일 생성
-  - `project-overall-plan.md`: 5 Phases(scaffold/data/nodes/runner/validation) + Gen Roadmap
-  - `project-overall-context.md`: 결정사항 D1-B~D11, 4대 불변원칙, Metrics 임계치, 컨벤션
-  - `project-overall-tasks.md`: 23개 Tasks (S:10, M:10, L:2, XL:1)
-- [x] `/skill-creator suggest and create new project skills` — 2개 프로젝트 커맨드 생성
-  - `.claude/commands/run-eval.md` — validation 결과 분석 + L2/L3/L4 Pass/Fail 판정
-  - `.claude/commands/node-impl.md` — Bronze 노드 1개 + L1 테스트 구현 가이드
-- [x] `/dev-docs create phase 1` — `dev/active/scaffold/` 4개 파일 생성
-  - `scaffold-plan.md`: Stage A/B/C, 13개 Task, Risks, Dependencies
-  - `scaffold-context.md`: domain-k-evolver 파일별 처리 방침(직접재사용/재해석/금지), 컨벤션 체크리스트
-  - `scaffold-tasks.md`: 커밋 분리 계획 (Step1/Step2/Step3 각 1 commit)
-  - `debug-history.md`: 이력 파일 준비
-  - project-overall 3개 파일 동기화 (scaffold 🔵 In Progress)
+- [x] 워크플로우 규칙 저장: 각 Phase 착수 전 `/dev-docs` 선행 실행 (memory 저장)
+- [x] **Step 4**: bench/japan-travel 데이터 큐레이션 (`ce09b73`)
+- [x] `/dev-docs create phase nodes`: nodes Phase dev-docs 생성 (`0ec8f0a`)
+- [x] **Step 5**: `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` (`2d8249e`) — 15/15 pass
+- [x] **Step 6**: `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` — 11/11 pass
+  - 카테고리 내 de-dup + 전역 de-dup (크로스-카테고리 중복 방지)
+  - 프롬프트 개선: 전체 레지스트리 노출 + 추상 개념 금지 조건
+  - API 예외 propagate (ValueError만 catch, 인증/네트워크 오류는 전파)
 
 ## Current State
 
-코드 0줄. 모든 문서 완비, scaffold Phase 구현 대기.
-
 ```
 travel-k-integrator/
-├── CLAUDE.md
-├── docs/
-│   ├── masterplan_v0.md
-│   ├── masterplan_v0-reference.md
-│   ├── bird-view.md           ← 신규 (preliminary)
-│   └── session-compact.md     ← 본 파일
-├── dev/
-│   └── active/
-│       ├── project-overall/
-│       │   ├── project-overall-plan.md    ← 신규
-│       │   ├── project-overall-context.md ← 신규
-│       │   └── project-overall-tasks.md   ← 신규
-│       └── scaffold/
-│           ├── scaffold-plan.md           ← 신규
-│           ├── scaffold-context.md        ← 신규
-│           ├── scaffold-tasks.md          ← 신규
-│           └── debug-history.md           ← 신규
-└── .claude/
-    ├── settings.local.json
-    └── commands/
-        ├── compact-and-go.md
-        ├── dev-docs.md
-        ├── step-update.md
-        ├── run-eval.md    ← 신규
-        └── node-impl.md   ← 신규
+├── bench/japan-travel/
+│   ├── domain-skeleton.json  ✅
+│   └── seed-pack.json        ✅
+├── src/nodes/
+│   ├── seed.py               ✅ (Step 5, 2d8249e)
+│   ├── entity_gen.py         ✅ (Step 6)
+│   ├── plan.py               ← 다음 (Step 7)
+│   ├── collect.py            ← Step 8
+│   ├── integrate.py          ← Step 9
+│   └── critique.py           ← Step 10
+├── tests/test_nodes/
+│   ├── test_seed.py          ✅ (15 passed)
+│   ├── test_entity_gen.py    ✅ (11 passed)
+│   └── (나머지 4개 미구현)
+└── dev/active/
+    ├── project-overall/      ✅ (동기화 완료)
+    ├── data/                 ✅ (Complete)
+    └── nodes/                🔵 In Progress (2/6)
 ```
 
-**글로벌 커맨드 (`~/.claude/commands/`):** init-claude-md, bird-view, resume-day, resume-session, close-day
-
-**현재 브랜치**: main (커밋 없음) — Step 1 완료 후 첫 커밋 예정
-
-### Changed Files
-
-- `docs/bird-view.md` — 신규 생성 (preliminary, 설계 기반)
-- `dev/active/project-overall/project-overall-plan.md` — 신규
-- `dev/active/project-overall/project-overall-context.md` — 신규
-- `dev/active/project-overall/project-overall-tasks.md` — 신규
-- `dev/active/scaffold/scaffold-plan.md` — 신규
-- `dev/active/scaffold/scaffold-context.md` — 신규
-- `dev/active/scaffold/scaffold-tasks.md` — 신규
-- `dev/active/scaffold/debug-history.md` — 신규
-- `.claude/commands/run-eval.md` — 신규
-- `.claude/commands/node-impl.md` — 신규
+**현재 브랜치**: main
+**최신 커밋**: Step 6 커밋 예정
 
 ## Remaining / TODO
 
-Implementation Roadmap (scaffold Phase 기준):
+nodes Phase (Steps 5–10):
 
-- [x] **Step 1**: 프로젝트 골격 생성 → `3e9a686`
-- [x] **Step 2**: state.py + config.py + schemas 5개 → `8075941`
-- [x] **Step 3**: adapters + utils 9개 → `bbbe14a`
-- [ ] **Step 4**: bench/japan-travel/ 데이터 수작업 큐레이션 (data Phase)
-- [ ] **Steps 5–10**: 6개 노드 + L1 테스트 (nodes Phase) → `/node-impl` 사용
+- [x] **Step 5**: seed.py + test_seed.py → `2d8249e`
+- [x] **Step 6**: entity_gen.py + test_entity_gen.py → (이번 커밋)
+- [ ] **Step 7**: plan.py + test_plan.py
+- [ ] **Step 8**: collect.py + test_collect.py
+- [ ] **Step 9**: integrate.py + test_integrate.py
+- [ ] **Step 10**: critique.py + test_critique.py
 - [ ] **Step 11**: graph.py + scripts/run_bronze.py (runner Phase)
-- [ ] **Steps 12–14**: dev-smoke → dev-baseline → bronze-v1 (validation Phase) → `/run-eval` 사용
+- [ ] **Steps 12–14**: dev-smoke → dev-baseline → bronze-v1 (validation Phase)
 
 ## Key Decisions
 
-- **dataclass vs Pydantic**: Python dataclass 선택 (LangGraph 호환. asdict/from_dict로 연동)
-- **LangGraph 연동**: Step 11까지 보류. state.py는 순수 Python dataclass
-- **invariant_checker**: 4대 불변원칙 (Prescription-compiled D11 폐기)
-- **entity_resolver similarity**: difflib.SequenceMatcher (외부 embedding 없이 slug 기반)
-- **adapters L1 테스트 없음**: scaffold에서 API key 의존. nodes Phase에서 mock으로 처리
-- **커밋 분리**: Step 1 / Step 2 / Step 3 각 1 commit (scaffold = 3 commits)
-- **프로젝트 커맨드**: run-eval + node-impl 2개 추가 → `.claude/commands/`에 저장
+- **워크플로우**: 각 Phase 착수 전 `/dev-docs` 먼저 실행 → 구현 (memory 저장됨)
+- **LangGraph 노드 시그니처**: `(BronzeState) → dict` (seed만 config 추가)
+- **entity_gen de-dup**: 카테고리 내 + 전역(모든 카테고리) slug 비교, sim≥0.85 거부
+- **entity_gen 프롬프트**: 전체 레지스트리 entity 목록 포함, 추상 개념 금지 조건 명시
+- **entity_gen 예외 처리**: API 오류는 propagate — except ValueError만 catch
+- **LLM adapter**: `create_llm(config)` → `.invoke(prompt)` → `.content` 패턴
+- **mock 패턴**: `patch("src.nodes.<node>.create_llm", return_value=MockLLM([...]))`
 
 ## Context
 
 다음 세션에서는 답변에 한국어를 사용하세요.
 
 - **참조 프로젝트**: `C:\Users\User\Learning\KBs-2026\domain-k-evolver`
-  - 직접 재사용: `utils/llm_parse.py`, `utils/state_io.py`, `utils/cost_guard.py`, `adapters/llm_adapter.py`, `adapters/search_adapter.py`, `config.py`, `utils/schema_validator.py`
-  - 재해석: `utils/entity_resolver.py` (alias 제거), `utils/invariant_checker.py` (4대로 축소), `utils/metrics.py` (3개 지표)
-  - 사용 금지: `mode.py`, `remodel.py`, `audit.py`, `coverage_map.py`, `novelty.py`, `policy_manager.py`, `readiness_gate.py`
-- **scaffold-context.md** 필수 참조: `dev/active/scaffold/scaffold-context.md`
-- **LLM**: `gpt-4.1-mini`, `temperature=0.0` (고정)
-- **Python 환경**: anaconda3
+  - 참조 가능: `src/nodes/collect.py`, `src/nodes/integrate.py`, `src/nodes/critique.py`, `src/nodes/plan.py`
+- **nodes-context.md** 필수 참조: `dev/active/nodes/nodes-context.md`
+- **masterplan_v0-reference.md §C**: 각 노드 의사코드 + LLM 프롬프트
+- **LLM adapter**: `src/adapters/llm_adapter.py` — `create_llm(config)`, `MockLLM([responses])`
+- **entity_resolver**: `max_similarity(slug, existing_slugs)` — `src/utils/entity_resolver.py`
 
 ## Next Action
 
 ### 단기 (다음 세션)
 
-**scaffold Phase 완료. Step 4 (bench 데이터 큐레이션) 착수.**
+**Step 7: plan.py + test_plan.py 구현**
 
 ```
-bench/japan-travel/
-├── domain-skeleton.json  ← §A 인스턴스 그대로 작성
-└── seed-entities.json    ← 수작업 큐레이션 (카테고리별 2~3개 entity)
+/node-impl plan
 ```
 
-커밋: `Step 4: bench/japan-travel 데이터 큐레이션`
-그 다음 `/node-impl seed` 로 seed.py + L1 테스트 착수.
+plan 노드 핵심:
+- entity_select: open GU 보유 entity 중 vacant_field_count 최다 → target_entity
+- gap_gen: target_entity의 applicable_fields 재확인 → 누락 GU 생성
+- slicing: open GU 중 target_entity 것만 → plan_queue[:max_gus_per_cycle=25]
+- 참조: masterplan_v0-reference.md §C.2
 
 ### 중기 (이번 주)
 
-- Step 4 bench 데이터 큐레이션
-- Steps 5–10: 6개 노드 + L1 테스트 (`/node-impl` 사용)
-- Step 11: graph.py + scripts/run_bronze.py
-- Steps 12–14: dev-smoke → dev-baseline → bronze-v1
+- Step 7~10: 나머지 4개 노드
+- Step 11: graph.py + run_bronze.py (runner Phase — `/dev-docs` 먼저)
+- Steps 12–14: validation Phase

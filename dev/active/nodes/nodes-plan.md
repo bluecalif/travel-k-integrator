@@ -1,7 +1,7 @@
 # nodes Phase Plan
 > Gen: bronze
 > Last Updated: 2026-04-30
-> Status: In Progress
+> Status: In Progress (2/6 — Step 7 진행 예정)
 
 ## Summary
 
@@ -18,6 +18,11 @@ data Phase ✅ 완료:
 - `bench/japan-travel/seed-pack.json` — 8 categories × 1 entity, initial_knowledge 포함
 - `src/state.py` BronzeState/KU/EU/GU/EntityMeta/CategorySaturation dataclass 정의됨
 - `src/config.py` BronzeConfig, `src/utils/` 전체 (llm_parse, state_io, cost_guard, entity_resolver, invariant_checker, metrics, schema_validator), `src/adapters/` 전체
+
+nodes Phase 진행:
+- **Step 5 ✅** `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` — 15/15 pass (`2d8249e`)
+- **Step 6 ✅** `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` — 11/11 pass
+  - 카테고리 내 + 전역 de-dup, API 예외 propagate, 프롬프트 품질 개선
 
 ---
 

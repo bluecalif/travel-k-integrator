@@ -39,7 +39,7 @@ Japan Travel 도메인에서 entity별 순차 처리로 Knowledge Graph 구축.
 - **scaffold Phase ✅ Complete** — Steps 1–3 커밋 완료 (3e9a686 / 8075941 / bbbe14a)
   - `python -m pytest` 통과, 전체 import 성공
 - **data Phase ✅ Complete** — Step 4 커밋 완료 (ce09b73), 8 categories × 1 entity + domain-skeleton
-- **nodes Phase 🔵 In Progress** — dev-docs 생성 완료, Step 5 (seed.py) 착수
+- **nodes Phase 🔵 In Progress** — Step 5 ✅ (seed.py, 2d8249e), Step 6 ✅ (entity_gen.py, 전역 de-dup + 프롬프트 품질 개선)
 
 ---
 
