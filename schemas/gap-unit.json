@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gap-unit",
+  "type": "object",
+  "required": ["gu_id", "entity_key", "field", "status", "created_at", "attempts"],
+  "properties": {
+    "gu_id":       { "type": "string" },
+    "entity_key":  { "type": "string" },
+    "field":       { "type": "string" },
+    "status":      { "type": "string", "enum": ["open", "resolved", "failed"] },
+    "created_at":  { "type": "string" },
+    "resolved_at": { "type": ["string", "null"] },
+    "attempts":    { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

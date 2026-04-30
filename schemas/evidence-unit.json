@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "evidence-unit",
+  "type": "object",
+  "required": ["eu_id", "url", "title", "snippet", "retrieved_at", "search_query"],
+  "properties": {
+    "eu_id":        { "type": "string" },
+    "url":          { "type": "string" },
+    "title":        { "type": "string" },
+    "snippet":      { "type": "string" },
+    "retrieved_at": { "type": "string" },
+    "search_query": { "type": "string" }
+  },
+  "additionalProperties": false
+}

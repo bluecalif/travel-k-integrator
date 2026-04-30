@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "knowledge-unit",
+  "type": "object",
+  "required": ["ku_id", "entity_key", "field", "value", "confidence", "status", "evidence_links", "created_at", "updated_at"],
+  "properties": {
+    "ku_id":          { "type": "string" },
+    "entity_key":     { "type": "string" },
+    "field":          { "type": "string" },
+    "value":          {},
+    "confidence":     { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "status":         { "type": "string", "enum": ["active", "conflicting", "archived"] },
+    "evidence_links": { "type": "array", "items": { "type": "string" } },
+    "created_at":     { "type": "string" },
+    "updated_at":     { "type": "string" }
+  },
+  "additionalProperties": false
+}
