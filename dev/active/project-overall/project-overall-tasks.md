@@ -1,7 +1,7 @@
 # Project Overall Tasks
 > Gen: bronze
 > Last Updated: 2026-04-30
-> scaffold: ✅ Complete | data: 🔵 In Progress
+> scaffold: ✅ Complete | data: ✅ Complete | nodes: ⬜
 
 ## Summary
 
@@ -35,8 +35,8 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 2.1 | Step 4: bench/japan-travel/domain-skeleton.json (8 categories × 11 fields 매트릭스) | M | ⬜ | — |
-| 2.2 | Step 4: bench/japan-travel/seed-pack.json (8 categories × 1–2 entity, 초기 KU 값) | M | ⬜ | — |
+| 2.1 | Step 4: bench/japan-travel/domain-skeleton.json (8 categories × 11 fields 매트릭스) | M | ✅ | ce09b73 |
+| 2.2 | Step 4: bench/japan-travel/seed-pack.json (8 categories × 1–2 entity, 초기 KU 값) | M | ✅ | ce09b73 |
 
 ---
 

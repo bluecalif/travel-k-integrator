@@ -1,7 +1,7 @@
 # Project Overall Plan
 > Gen: bronze
 > Last Updated: 2026-04-30
-> Status: scaffold ✅ — data 🔵 In Progress
+> Status: scaffold ✅ — data ✅ — nodes 대기
 
 ## Summary
 
@@ -24,7 +24,7 @@ Japan Travel 도메인에서 entity별 순차 처리로 Knowledge Graph 구축.
 | Phase | Steps | 목적 | 합격 기준 | Status |
 |-------|-------|------|----------|--------|
 | **scaffold** | 1–3 | 프로젝트 골격 + state + adapters + utils | 전체 import 성공, `python -m pytest` 통과 | ✅ Complete |
-| **data** | 4 | bench/japan-travel 데이터 수작업 큐레이션 | seed-pack.json + domain-skeleton.json 완성 | 🔵 In Progress |
+| **data** | 4 | bench/japan-travel 데이터 수작업 큐레이션 | seed-pack.json + domain-skeleton.json 완성 | ✅ Complete |
 | **nodes** | 5–10 | 6개 노드 구현 + L1 단위 테스트 | 각 노드 L1 100% pass | ⬜ |
 | **runner** | 11 | graph.py + scripts/run_bronze.py | 1-cycle dry-run 오류 없음 | ⬜ |
 | **validation** | 12–14 | dev-smoke → dev-baseline → bronze-v1 순차 합격 | L2 → L3 → L4 | ⬜ |
@@ -38,7 +38,8 @@ Japan Travel 도메인에서 entity별 순차 처리로 Knowledge Graph 구축.
 - `dev/active/project-overall/` 완성 (2026-04-30)
 - **scaffold Phase ✅ Complete** — Steps 1–3 커밋 완료 (3e9a686 / 8075941 / bbbe14a)
   - `python -m pytest` 통과, 전체 import 성공
-- **data Phase 🔵 In Progress** — dev-docs 생성 완료, Step 4 큐레이션 착수
+- **data Phase ✅ Complete** — Step 4 커밋 완료 (ce09b73), 8 categories × 1 entity + domain-skeleton
+- **nodes Phase 대기 중** — `/node-impl seed` 착수 전
 
 ---
 
