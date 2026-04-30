@@ -27,6 +27,7 @@ class BronzeConfig:
     saturation_consecutive_threshold: int = 2
     gu_max_attempts: int = 3
     budget_cap_usd: float = 1.2
+    max_cycles: int = 20
 
     @classmethod
     def from_env(cls) -> BronzeConfig:
@@ -43,6 +44,7 @@ class BronzeConfig:
             saturation_consecutive_threshold=int(os.environ.get("BRONZE_SATURATION_CONSECUTIVE_THRESHOLD", "2")),
             gu_max_attempts=int(os.environ.get("BRONZE_GU_MAX_ATTEMPTS", "3")),
             budget_cap_usd=float(os.environ.get("BRONZE_BUDGET_CAP_USD", "1.2")),
+            max_cycles=int(os.environ.get("BRONZE_MAX_CYCLES", "20")),
         )
 
     def validate_api_keys(self) -> None:
