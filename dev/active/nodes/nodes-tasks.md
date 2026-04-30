@@ -31,7 +31,7 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.2 | `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` (L1) | M | ✅ | — |
+| 3.2 | `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` (L1) | M | ✅ | c6ef50e |
 
 **완료 조건**:
 - [x] 신규 후보 → entity_registry 등록 + mandatory GU 생성

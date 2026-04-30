@@ -45,7 +45,7 @@
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
 | 3.1 | Step 5: nodes/seed.py + tests/test_nodes/test_seed.py (L1) | M | ✅ | 2d8249e |
-| 3.2 | Step 6: nodes/entity_gen.py + tests/test_nodes/test_entity_gen.py (L1) | M | ✅ | — |
+| 3.2 | Step 6: nodes/entity_gen.py + tests/test_nodes/test_entity_gen.py (L1) | M | ✅ | c6ef50e |
 | 3.3 | Step 7: nodes/plan.py + tests/test_nodes/test_plan.py (L1) | S | ⬜ | — |
 | 3.4 | Step 8: nodes/collect.py + tests/test_nodes/test_collect.py (L1) | M | ⬜ | — |
 | 3.5 | Step 9: nodes/integrate.py (D4-A) + tests/test_nodes/test_integrate.py (L1) | L | ⬜ | — |
