@@ -1,12 +1,12 @@
 # nodes Phase Tasks
 > Gen: bronze
-> Last Updated: 2026-04-30
-> Status: In Progress (3/6, 50%)
+> Last Updated: 2026-05-01
+> Status: ✅ 완료 (6/6, 100%)
 
 ## Summary
 
 - **총 Tasks**: 6 (M: 3, S: 2, L: 1)
-- **완료**: 3/6 (50%)
+- **완료**: 6/6 (100%)
 - **Steps**: 5–10
 - **합격 기준**: `python -m pytest tests/test_nodes/` 전체 pass
 
@@ -59,13 +59,13 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.4 | `src/nodes/collect.py` + `tests/test_nodes/test_collect.py` (L1) | M | ⬜ | — |
+| 3.4 | `src/nodes/collect.py` + `tests/test_nodes/test_collect.py` (L1) | M | ✅ | 909f294 |
 
 **완료 조건**:
-- [ ] Claim 추출 → pending_claims 증가 + EU 생성
-- [ ] 0-claim → gu.attempts +1
-- [ ] attempts≥3 → gu.status="failed"
-- [ ] L1 pytest pass (mock search + mock LLM)
+- [x] Claim 추출 → pending_claims 증가 + EU 생성
+- [x] 0-claim → gu.attempts +1
+- [x] attempts≥3 → gu.status="failed"
+- [x] L1 pytest pass (8/8)
 
 ---
 
@@ -73,15 +73,15 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.5 | `src/nodes/integrate.py` + `tests/test_nodes/test_integrate.py` (L1) | L | ⬜ | — |
+| 3.5 | `src/nodes/integrate.py` + `tests/test_nodes/test_integrate.py` (L1) | L | ✅ | cf4cd42 |
 
 **완료 조건**:
-- [ ] Case A: active KU 신규 + GU resolved
-- [ ] Case B: evidence_links +1 (conflicting KU 없음)
-- [ ] Case C: conflicting KU 신규, active KU 유지
-- [ ] (entity_key, field) active KU = 정확히 1개 (불변원칙 2)
-- [ ] active KU evidence_links ≥ 1 (불변원칙 3)
-- [ ] L1 pytest pass
+- [x] Case A: active KU 신규 + GU resolved
+- [x] Case B: evidence_links +1 (conflicting KU 없음)
+- [x] Case C: conflicting KU 신규, active KU 유지
+- [x] (entity_key, field) active KU = 정확히 1개 (불변원칙 2)
+- [x] active KU evidence_links ≥ 1 (불변원칙 3)
+- [x] L1 pytest pass (19/19)
 
 ---
 
@@ -89,19 +89,19 @@
 
 | # | Task | Size | Status | Commit |
 |---|------|------|--------|--------|
-| 3.6 | `src/nodes/critique.py` + `tests/test_nodes/test_critique.py` (L1) | S | ⬜ | — |
+| 3.6 | `src/nodes/critique.py` + `tests/test_nodes/test_critique.py` (L1) | S | ✅ | a6ebc9a |
 
 **완료 조건**:
-- [ ] all_saturated AND open=0 → terminate_reason="converged"
-- [ ] current_cycle≥max_cycles → terminate_reason="max_cycles"
-- [ ] 계속 → current_cycle +1
-- [ ] prescription 생성 로직 없음 확인 (D11)
-- [ ] L1 pytest pass
+- [x] all_saturated AND open=0 → terminate_reason="converged"
+- [x] current_cycle≥max_cycles → terminate_reason="max_cycles"
+- [x] 계속 → current_cycle +1
+- [x] prescription 생성 로직 없음 확인 (D11)
+- [x] L1 pytest pass (11/11)
 
 ---
 
 ## 전체 완료 체크
 
-- [ ] 6/6 Tasks ✅ (현재 3/6)
-- [ ] `python -m pytest tests/test_nodes/` 전체 pass
-- [ ] 각 Step별 커밋 완료 (Step 5 ✅ / 6 ✅ / 7 ✅ / 8~10 ⬜)
+- [x] 6/6 Tasks ✅
+- [x] `python -m pytest tests/test_nodes/` 전체 pass (72 passed)
+- [x] 각 Step별 커밋 완료 (5: 2d8249e / 6: c6ef50e / 7: af6ed9b / 8: 909f294 / 9: cf4cd42 / 10: a6ebc9a)

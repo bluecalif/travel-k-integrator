@@ -1,7 +1,7 @@
 # nodes Phase Plan
 > Gen: bronze
 > Last Updated: 2026-05-01
-> Status: In Progress (3/6 — Step 8 collect.py 진행 예정)
+> Status: ✅ 완료 (6/6 — 전체 72 passed)
 
 ## Summary
 
@@ -19,14 +19,17 @@ data Phase ✅ 완료:
 - `src/state.py` BronzeState/KU/EU/GU/EntityMeta/CategorySaturation dataclass 정의됨
 - `src/config.py` BronzeConfig, `src/utils/` 전체 (llm_parse, state_io, cost_guard, entity_resolver, invariant_checker, metrics, schema_validator), `src/adapters/` 전체
 
-nodes Phase 진행:
+nodes Phase 완료:
 - **Step 5 ✅** `src/nodes/seed.py` + `tests/test_nodes/test_seed.py` — 15/15 pass (`2d8249e`)
-- **Step 6 ✅** `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` — 11/11 pass
-  - 카테고리 내 + 전역 de-dup, API 예외 propagate, 프롬프트 품질 개선
-- **Step 7 ✅** `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` — 8/8 pass
-  - `BronzeState.target_entity` → `target_entities: dict[str, str]` (카테고리별 entity 선정)
-  - gap_gen: applicable field 중 GU 전혀 없는 field에 open GU 신규 생성
-  - plan_queue: 전 카테고리 target entity open GU 합산 후 max_gus_per_cycle cap
+- **Step 6 ✅** `src/nodes/entity_gen.py` + `tests/test_nodes/test_entity_gen.py` — 11/11 pass (`c6ef50e`)
+- **Step 7 ✅** `src/nodes/plan.py` + `tests/test_nodes/test_plan.py` — 8/8 pass (`af6ed9b`)
+  - `BronzeState.target_entity` → `target_entities: dict[str, str]`
+- **Step 8 ✅** `src/nodes/collect.py` + `tests/test_nodes/test_collect.py` — 8/8 pass (`909f294`)
+  - plan_queue GU → Tavily 검색 → EU 생성 → LLM Claim 추출
+- **Step 9 ✅** `src/nodes/integrate.py` + `tests/test_nodes/test_integrate.py` — 19/19 pass (`cf4cd42`)
+  - Case A/B/C, `_same_value` 정규화, D4-A active KU 불변
+- **Step 10 ✅** `src/nodes/critique.py` + `tests/test_nodes/test_critique.py` — 11/11 pass (`a6ebc9a`)
+  - BronzeConfig.max_cycles 추가, D11 prescription 금지 준수
 
 ---
 
