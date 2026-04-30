@@ -1,7 +1,7 @@
 # Project Overall Tasks
 > Gen: bronze
 > Last Updated: 2026-04-30
-> scaffold: ✅ Complete | data: ⬜
+> scaffold: ✅ Complete | data: 🔵 In Progress
 
 ## Summary
 

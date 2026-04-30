@@ -37,6 +37,8 @@
 | scaffold-1 | State 구현: Python dataclass (Pydantic 아님) | LangGraph 호환. asdict/from_dict 헬퍼로 연동 |
 | scaffold-2 | entity_resolver similarity: difflib.SequenceMatcher | 외부 embedding 없이 slug 기반 비교 |
 | scaffold-3 | adapters L1 테스트: scaffold 단계 없음 | API key 의존. nodes Phase에서 mock 테스트 작성 |
+| data-1 | seed-pack.json 포맷: entities 배열 + initial_knowledge(field+value+EU정보) | seed 노드가 단일 파일로 entity 등록 + KU/EU 생성 처리 |
+| data-2 | domain-skeleton.json: §A 인스턴스 그대로 사용 | masterplan 정합성 유지 |
 
 ## 4대 불변원칙 (Bronze)
 
