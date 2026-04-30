@@ -39,6 +39,10 @@
 | scaffold-3 | adapters L1 테스트: scaffold 단계 없음 | API key 의존. nodes Phase에서 mock 테스트 작성 |
 | data-1 | seed-pack.json 포맷: entities 배열 + initial_knowledge(field+value+EU정보) | seed 노드가 단일 파일로 entity 등록 + KU/EU 생성 처리 |
 | data-2 | domain-skeleton.json: §A 인스턴스 그대로 사용 | masterplan 정합성 유지 |
+| nodes-1 | LangGraph 노드 시그니처: `(BronzeState) → dict` | StateGraph 병합 방식. 전체 state 반환 아님 |
+| nodes-2 | L1 테스트: unittest.mock.patch로 LLMAdapter/SearchAdapter 대체 | API key 없이 결정론적 테스트 |
+| nodes-4 | integrate._same_value: 정확 일치 + 숫자 정규화만 | 의미적 동치는 Silver 이후 (D11) |
+| nodes-6 | critique.py: terminate_reason 설정 → graph.py에서 END/CONTINUE 분기 | 노드가 직접 END 반환 안 함 |
 
 ## 4대 불변원칙 (Bronze)
 
